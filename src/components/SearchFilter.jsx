@@ -70,9 +70,9 @@ const SearchFilter = ({
         {/* Clear Filters */}
         <button
           onClick={clearFilters}
-          className={`flex items-center space-x-1 px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors
-    ${hasActiveFilters ? '' : 'opacity-0 pointer-events-none'}`}
-          tabIndex={hasActiveFilters ? 0 : -1}
+          disabled={!hasActiveFilters}
+          className={`flex items-center space-x-1 px-3 py-2 text-gray-600 rounded-lg transition-colors
+    ${hasActiveFilters ? 'hover:text-gray-800 cursor-pointer bg-gray-100 hover:bg-gray-200' : 'opacity-50 cursor-not-allowed bg-gray-50'}`}
         >
           <X size={16} />
           <span className="text-sm">Clear</span>

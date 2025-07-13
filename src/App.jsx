@@ -1,14 +1,18 @@
 import React, { useState, useMemo } from 'react';
 import ProductCard from './components/ProductCard';
-import { products } from './data/products';
 import ComparisonPanel from './components/ComparisonPanel';
 import SearchFilter from './components/SearchFilter';
+import { products } from './data/products';
+import { useLocalStorage } from './hooks/useLocalStorage';
+
+
 
 function App() {
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [selectedProducts, setSelectedProducts] = useLocalStorage('selectedProducts', []);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 1200]);
+  
 
   const availableBrands = useMemo(() => {
     return Array.from(new Set(products.map(product => product.brand)));
@@ -55,6 +59,7 @@ function App() {
   };
 
   const canSelectMore = selectedProducts.length < 3;
+  
 
   return (
     <>
@@ -82,6 +87,8 @@ function App() {
           onPriceRangeChange={setPriceRange}
           maxPrice={maxPrice}
         />
+
+      
 
         <div className="mb-6">
           <p className="text-gray-600">
@@ -124,6 +131,9 @@ function App() {
         )}
       </div>
 
+
+ 
+
       {/* Comparison Panel */}
       <ComparisonPanel
         selectedProducts={selectedProducts}
@@ -131,6 +141,8 @@ function App() {
         onClearAll={handleClearAll}
         isVisible={selectedProducts.length >= 2}
       />
+
+      
     </>
   );
 }

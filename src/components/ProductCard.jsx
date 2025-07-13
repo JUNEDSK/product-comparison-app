@@ -16,8 +16,22 @@ const ProductCard = ({
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleToggleSelect();
+    }
+  };
+
   return (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+    <div
+      className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      role="button"
+      tabIndex={0}
+      aria-pressed={isSelected}
+      onClick={handleToggleSelect}
+      onKeyDown={handleKeyDown}
+    >
       <div className="relative">
         <img
           src={product.image}
@@ -69,7 +83,10 @@ const ProductCard = ({
         </div>
 
         <button
-          onClick={handleToggleSelect}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleToggleSelect();
+          }}
           disabled={!canSelect && !isSelected}
           className={`w-full py-2 px-4 rounded-lg font-medium transition-all duration-200 flex items-center justify-center space-x-2 ${
             isSelected

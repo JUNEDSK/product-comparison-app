@@ -4,11 +4,16 @@ import { Plus, Check, Camera, Monitor, Battery, HardDrive, Cpu } from 'lucide-re
 const ProductCard = ({
   product,
   isSelected,
-  onToggleCompare,
-  canSelect = true // Optional: allow disabling selection if needed
+  onSelect,
+  onDeselect,
+  canSelect = true
 }) => {
   const handleToggleSelect = () => {
-    onToggleCompare(product.id);
+    if (isSelected) {
+      onDeselect(product.id);
+    } else if (canSelect) {
+      onSelect(product);
+    }
   };
 
   return (

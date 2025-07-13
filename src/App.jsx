@@ -4,15 +4,15 @@ import ComparisonPanel from './components/ComparisonPanel';
 import SearchFilter from './components/SearchFilter';
 import { products } from './data/products';
 import { useLocalStorage } from './hooks/useLocalStorage';
-
-
+import { useDarkMode } from './hooks/useDarkMode';
+import { Sun, Moon } from 'lucide-react';
 
 function App() {
   const [selectedProducts, setSelectedProducts] = useLocalStorage('selectedProducts', []);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 1200]);
-  
+  const [isDark, setIsDark] = useDarkMode(); // 🔥 Dark mode state
 
   const availableBrands = useMemo(() => {
     return Array.from(new Set(products.map(product => product.brand)));
@@ -59,19 +59,25 @@ function App() {
   };
 
   const canSelectMore = selectedProducts.length < 3;
-  
+  console.log('Dark mode is:', isDark);
 
   return (
-    <>
+    <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="container mx-auto px-4 py-6 flex justify-center">
-          <div className="flex items-center space-x-3">
-            <div className="text-center">
-              <h1 className="text-3xl font-bold text-gray-900">SmartPhone Comparison</h1>
-              <p className="text-gray-600">Compare up to 3 smartphones side by side</p>
-            </div>
+      <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
+        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+          <div className="text-center">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">SmartPhone Comparison</h1>
+            <p className="text-gray-600 dark:text-gray-300">Compare up to 3 smartphones side by side</p>
           </div>
+          <button
+  onClick={() => setIsDark(!isDark)}
+  aria-label="Toggle theme"
+  className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+>
+  {isDark ? <Sun size={18} /> : <Moon size={18} />}
+</button>
+
         </div>
       </header>
 
@@ -88,10 +94,8 @@ function App() {
           maxPrice={maxPrice}
         />
 
-      
-
         <div className="mb-6">
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-gray-300">
             Showing {filteredProducts.length} of {products.length} products
             {selectedProducts.length > 0 && (
               <span className="ml-2 text-blue-600 font-medium">
@@ -116,7 +120,7 @@ function App() {
 
         {filteredProducts.length === 0 && (
           <div className="min-h-96 flex flex-col items-center justify-center col-span-full">
-            <p className="text-gray-500 text-lg">No products found matching your criteria</p>
+            <p className="text-gray-500 dark:text-gray-400 text-lg">No products found matching your criteria</p>
             <button
               onClick={() => {
                 setSearchTerm('');
@@ -131,9 +135,6 @@ function App() {
         )}
       </div>
 
-
- 
-
       {/* Comparison Panel */}
       <ComparisonPanel
         selectedProducts={selectedProducts}
@@ -141,9 +142,7 @@ function App() {
         onClearAll={handleClearAll}
         isVisible={selectedProducts.length >= 2}
       />
-
-      
-    </>
+    </div>
   );
 }
 

@@ -25,13 +25,14 @@ const ProductCard = ({
 
   return (
     <div
-      className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
       role="button"
       tabIndex={0}
       aria-pressed={isSelected}
       onClick={handleToggleSelect}
       onKeyDown={handleKeyDown}
     >
+      {/* Image Section */}
       <div className="relative">
         <img
           src={product.image}
@@ -44,44 +45,47 @@ const ProductCard = ({
           </div>
         )}
       </div>
-      
+
+      {/* Content Section */}
       <div className="p-6">
         <div className="flex justify-between items-start mb-2">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
-            <p className="text-sm text-gray-600">{product.brand}</p>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{product.name}</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{product.brand}</p>
           </div>
           <span className="text-xl font-bold text-blue-600">${product.price}</span>
         </div>
 
+        {/* Feature List */}
         <div className="space-y-2 mb-4">
-          <div className="flex items-center text-sm text-gray-700">
-            <Monitor size={14} className="mr-2 text-gray-500" />
+          <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+            <Monitor size={14} className="mr-2 text-gray-500 dark:text-gray-400" />
             <span className="font-medium">Screen:</span>
             <span className="ml-1">{product.features.screenSize}</span>
           </div>
-          <div className="flex items-center text-sm text-gray-700">
-            <Battery size={14} className="mr-2 text-gray-500" />
+          <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+            <Battery size={14} className="mr-2 text-gray-500 dark:text-gray-400" />
             <span className="font-medium">Battery:</span>
             <span className="ml-1">{product.features.battery}</span>
           </div>
-          <div className="flex items-center text-sm text-gray-700">
-            <Camera size={14} className="mr-2 text-gray-500" />
+          <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+            <Camera size={14} className="mr-2 text-gray-500 dark:text-gray-400" />
             <span className="font-medium">Camera:</span>
             <span className="ml-1">{product.features.camera}</span>
           </div>
-          <div className="flex items-center text-sm text-gray-700">
-            <HardDrive size={14} className="mr-2 text-gray-500" />
+          <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+            <HardDrive size={14} className="mr-2 text-gray-500 dark:text-gray-400" />
             <span className="font-medium">Storage:</span>
             <span className="ml-1">{product.features.storage}</span>
           </div>
-          <div className="flex items-center text-sm text-gray-700">
-            <Cpu size={14} className="mr-2 text-gray-500" />
+          <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+            <Cpu size={14} className="mr-2 text-gray-500 dark:text-gray-400" />
             <span className="font-medium">Processor:</span>
             <span className="ml-1">{product.features.processor}</span>
           </div>
         </div>
 
+        {/* Action Button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -93,7 +97,7 @@ const ProductCard = ({
               ? 'bg-green-600 text-white hover:bg-green-700'
               : canSelect
               ? 'bg-blue-600 text-white hover:bg-blue-700'
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              : 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
           }`}
         >
           {isSelected ? (

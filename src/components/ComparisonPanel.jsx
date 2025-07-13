@@ -29,22 +29,26 @@ const ComparisonPanel = ({
 
     if (featureKey === 'price') {
       const minPrice = Math.min(...values);
-      return currentValue === minPrice ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200';
+      return currentValue === minPrice
+        ? 'bg-green-50 dark:bg-green-900 border-green-200 dark:border-green-700'
+        : 'bg-red-50 dark:bg-red-900 border-red-200 dark:border-red-700';
     }
 
     const uniqueValues = new Set(values);
-    return uniqueValues.size > 1 ? 'bg-yellow-50 border-yellow-200' : 'bg-gray-50 border-gray-200';
+    return uniqueValues.size > 1
+      ? 'bg-yellow-50 dark:bg-yellow-900 border-yellow-200 dark:border-yellow-700'
+      : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-600';
   };
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 bg-white shadow-2xl border-t border-gray-200 z-50 max-h-96 overflow-y-auto"
+      className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 shadow-2xl border-t border-gray-200 dark:border-gray-700 z-50 max-h-96 overflow-y-auto"
       role="region"
       aria-label="Product Comparison Panel"
     >
       <div className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
             Product Comparison ({selectedProducts.length}/3)
           </h2>
           <button
@@ -61,14 +65,17 @@ const ComparisonPanel = ({
           <table className="w-full">
             <thead>
               <tr>
-                <th scope="col" className="text-left py-2 px-3 border-b border-gray-200 font-medium text-gray-700">
+                <th
+                  scope="col"
+                  className="text-left py-2 px-3 border-b border-gray-200 dark:border-gray-600 font-medium text-gray-700 dark:text-gray-300"
+                >
                   Feature
                 </th>
                 {selectedProducts.map(product => (
                   <th
                     key={product.id}
                     scope="col"
-                    className="text-center py-2 px-3 border-b border-gray-200"
+                    className="text-center py-2 px-3 border-b border-gray-200 dark:border-gray-600"
                   >
                     <div className="flex flex-col items-center">
                       <img
@@ -76,12 +83,12 @@ const ComparisonPanel = ({
                         alt={product.name}
                         className="w-12 h-12 object-cover rounded-lg mb-2"
                       />
-                      <div className="text-sm font-medium text-gray-900">{product.name}</div>
-                      <div className="text-xs text-gray-600">{product.brand}</div>
+                      <div className="text-sm font-medium text-gray-900 dark:text-white">{product.name}</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-400">{product.brand}</div>
                       <button
                         onClick={() => onRemoveProduct(product.id)}
                         aria-label={`Remove ${product.name} from comparison`}
-                        className="mt-2 p-1 text-red-600 hover:text-red-800 hover:bg-red-50 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                        className="mt-2 p-1 text-red-600 hover:text-red-800 hover:bg-red-50 dark:hover:bg-red-900 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
                       >
                         <X size={14} />
                       </button>
@@ -95,17 +102,17 @@ const ComparisonPanel = ({
                 <tr key={key}>
                   <td
                     scope="row"
-                    className="py-3 px-3 border-b border-gray-100"
+                    className="py-3 px-3 border-b border-gray-100 dark:border-gray-700"
                   >
                     <div className="flex items-center space-x-2">
-                      <Icon size={16} className="text-gray-500" />
-                      <span className="font-medium text-gray-700">{label}</span>
+                      <Icon size={16} className="text-gray-500 dark:text-gray-400" />
+                      <span className="font-medium text-gray-700 dark:text-gray-200">{label}</span>
                     </div>
                   </td>
                   {selectedProducts.map((product, index) => (
                     <td
                       key={product.id}
-                      className="py-3 px-3 border-b border-gray-100 text-center"
+                      className="py-3 px-3 border-b border-gray-100 dark:border-gray-700 text-center"
                     >
                       <span
                         className={`inline-block px-3 py-1 rounded-lg border text-sm font-medium ${getHighlightClass(

@@ -17,46 +17,47 @@ A responsive and accessible Smartphone Comparison Web App built with React, Vite
 💾 Selected products are persisted in localStorage
 
 🛠 Technologies Used
-React 18
-Vite
-Tailwind CSS
-Lucide Icons
+React 18 + Vite, 
+Tailwind CSS, 
+Lucide Icons, 
 localStorage
 
 📦 Installation
-1. Clone the repository
-bash
-Copy
-Edit
-git clone https://github.com/JUNEDSK/product-comparison-app.git
+1. Clone the repository, 
+bash, 
+Copy, 
+Edit, 
+git clone https://github.com/JUNEDSK/product-comparison-app.git,
 cd product-comparison-app
 
 3. Install dependencies
-bash
-Copy
-Edit
+bash, 
+Copy, 
+Edit, 
 npm install
 
 4. Start the development server
-bash
-Copy
-Edit
-npm run dev
+bash, 
+Copy, 
+Edit, 
+npm run dev, 
 Open your browser at: http://localhost:5173
 
 
 📸 Screenshot
 💡 Light & Dark mode supported — all UI elements adapt!
+
 <img width="1920" height="2279" alt="image" src="https://github.com/user-attachments/assets/b6d02d87-bf5b-4ff3-be30-d996160233f9" />
 <img width="1920" height="2279" alt="image" src="https://github.com/user-attachments/assets/9d676c36-00a3-4cb3-98f6-fa1884726d7e" />
 
 🙌 Contributing
 Pull requests and ideas are welcome!
+
 Fork this repo, make improvements, and submit a PR.
 
 🙏 Acknowledgments
-Lucide React Icons
-Tailwind CSS
+Lucide React Icons, 
+Tailwind CSS, 
 React Accessibility Guidelines
 
 

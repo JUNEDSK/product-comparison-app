@@ -50,7 +50,7 @@ src/
 
 📸 Screenshot
 💡 Light & Dark mode supported — all UI elements adapt!
-<img width="1920" height="2279" alt="image" src="https:/github.com/user-attachments/assets/09158013-e248-4e92-b0c2-a6ed9e7e7ec6" />
+<img width="1920" height="2279" alt="image" src="https://github.com/user-attachments/assets/b6d02d87-bf5b-4ff3-be30-d996160233f9" />
 <img width="1920" height="2279" alt="image" src="https://github.com/user-attachments/assets/9d676c36-00a3-4cb3-98f6-fa1884726d7e" />
 
 🙌 Contributing

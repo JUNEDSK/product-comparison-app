@@ -3,11 +3,17 @@ A responsive and accessible Smartphone Comparison Web App built with React, Vite
 
 🚀 Features
 ⚡ Built with Vite for fast dev/build times
+
 🧱 Product cards with screen, battery, camera, storage & processor details
+
 🔎 Search, brand filters, and price range filtering
+
 🧮 Comparison panel with visual feature highlights
+
 🌗 Dark mode support (toggle button)
+
 🎯 Keyboard accessibility (Enter/Space to toggle selections)
+
 💾 Selected products are persisted in localStorage
 
 🛠 Technologies Used
@@ -37,15 +43,6 @@ Copy
 Edit
 npm run dev
 Open your browser at: http://localhost:5173
-
-📁 Folder Structure
-src/
-├── components/         # Reusable UI components (Cards, Panel, Filters)
-├── data/               # Product JSON data
-├── hooks/              # Custom hooks (e.g., useLocalStorage)
-├── App.jsx             # Main app logic
-├── main.jsx            # React root render
-├── index.css           # Tailwind + global styles
 
 
 📸 Screenshot

@@ -5,7 +5,7 @@ import SearchFilter from './components/SearchFilter';
 import { products } from './data/products';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { useDarkMode } from './hooks/useDarkMode';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Smartphone  } from 'lucide-react';
 
 function App() {
   const [selectedProducts, setSelectedProducts] = useLocalStorage('selectedProducts', []);
@@ -64,25 +64,26 @@ function App() {
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
       {/* Header */}
-      <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">SmartPhone Comparison</h1>
-            <p className="text-gray-600 dark:text-gray-300">Compare up to 3 smartphones side by side</p>
+      <header className="bg-dark-800 shadow-sm border-b border-dark-700">
+        <div className="container mx-auto px-10 py-6 flex justify-between items-center">
+          <div className="flex items-center gap-1">
+          <Smartphone size={32} className="text-primary-500" />
+          <div>
+            <h1 className="text-3xl font-bold">Smart Phones</h1>
           </div>
+        </div>
+     
           <button
-  onClick={() => setIsDark(!isDark)}
-  aria-label="Toggle theme"
-  className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
->
-  {isDark ? <Sun size={18} /> : <Moon size={18} />}
-</button>
-
+            onClick={() => setIsDark(!isDark)}
+            aria-label="Toggle theme"
+            className="p-2 rounded-full dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-900 text-light-200 hover:bg-dark-600 transition-colors"
+          >
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </div>
       </header>
 
-      {/* Search and Filter */}
-      <div className="container mx-auto px-10 py-8">
+     <div className="container mx-auto px-10 py-8">
         <SearchFilter
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
@@ -95,10 +96,10 @@ function App() {
         />
 
         <div className="mb-6">
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-light-400">
             Showing {filteredProducts.length} of {products.length} products
             {selectedProducts.length > 0 && (
-              <span className="ml-2 text-blue-600 font-medium">
+              <span className="ml-2 text-primary-500 font-medium">
                 • {selectedProducts.length} selected for comparison
               </span>
             )}
@@ -120,14 +121,14 @@ function App() {
 
         {filteredProducts.length === 0 && (
           <div className="min-h-96 flex flex-col items-center justify-center col-span-full">
-            <p className="text-gray-500 dark:text-gray-400 text-lg">No products found matching your criteria</p>
+            <p className="text-light-400 text-lg">No products found matching your criteria</p>
             <button
               onClick={() => {
                 setSearchTerm('');
                 setSelectedBrands([]);
                 setPriceRange([0, maxPrice]);
               }}
-              className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
             >
               Clear Filters
             </button>
